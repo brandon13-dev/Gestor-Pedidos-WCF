@@ -107,7 +107,7 @@ Para configurar el entorno:
 
 `cp Gestor-Pedidos-Service/Web.config.template Gestor-Pedidos-Service/Web.config`
 
-Luego edita `Gestor-Pedidos-Web/Web.config` y reemplaza los placeholders con tus credenciales dentro de la etiqueta `<connectionStrings>` (data source, initial catalog, user id, password).
+Luego edita `Gestor-Pedidos-Service/Web.config` y reemplaza los placeholders con tus credenciales dentro de la etiqueta `<connectionStrings>` (data source, initial catalog, user id, password).
 
 **4. Restaurar paquetes NuGet**
 
@@ -201,43 +201,43 @@ GestorPedidosWCF/
 
 ### Pantalla de Pedidos Vacía
 
-![Lista Pedidos Vacía](Gestor-Pedidos-SP/Content/images/Pedidos-Vacia.png)
+![Lista Pedidos Vacía](Gestor-Pedidos-Web/Content/images/Pedidos-Vacia.png)
 
 ### Pantalla de Crear Pedido
 
-![Crear Pedido](Gestor-Pedidos-SP/Content/images/Crear-Pedido.png)
+![Crear Pedido](Gestor-Pedidos-Web/Content/images/Crear-Pedido.png)
 
 ### Pantalla de Crear Pedido con error
 
-![Validaciones Crear Pedido](Gestor-Pedidos-SP/Content/images/Crear-Pedido-Validaciones.png)
+![Validaciones Crear Pedido](Gestor-Pedidos-Web/Content/images/Crear-Pedido-Validaciones.png)
 
 ### Pantalla de Pedido creado correctamente
 
-![Pedido Creado Correctamente](Gestor-Pedidos-SP/Content/images/Crear-Pedido-Correcto.png)
+![Pedido Creado Correctamente](Gestor-Pedidos-Web/Content/images/Crear-Pedido-Correcto.png)
 
 ### Pantalla de Lista de Pedidos
 
-![Lista de Pedidos](Gestor-Pedidos-SP/Content/images/Pedidos-Lista.png)
+![Lista de Pedidos](Gestor-Pedidos-Web/Content/images/Pedidos-Lista.png)
 
 ### Pantalla de reporte de Pedidos
 
-![Reporte de Pedidos](Gestor-Pedidos-SP/Content/images/Reporte-Pedidos.png)
+![Reporte de Pedidos](Gestor-Pedidos-Web/Content/images/Reporte-Pedidos.png)
 
 ### Pantalla de reporte de Pedidos vacía
 
-![Reporte de Pedidos vacía](Gestor-Pedidos-SP/Content/images/Reporte-Vacio.png)
+![Reporte de Pedidos vacía](Gestor-Pedidos-Web/Content/images/Reporte-Vacio.png)
 
 ### Pantalla de lista de Clientes
 
-![Lista de Clientes](Gestor-Pedidos-SP/Content/images/Clientes-Lista.png)
+![Lista de Clientes](Gestor-Pedidos-Web/Content/images/Clientes-Lista.png)
 
 ### Pantalla de Crear Cliente
 
-![Crear Cliente](Gestor-Pedidos-SP/Content/images/Clientes-Crear.png)
+![Crear Cliente](Gestor-Pedidos-Web/Content/images/Clientes-Crear.png)
 
 ### Pantalla de Editar Cliente
 
-![Editar Cliente](Gestor-Pedidos-SP/Content/images/Clientes-Editar.png)
+![Editar Cliente](Gestor-Pedidos-Web/Content/images/Clientes-Editar.png)
 
 ## Notas adicionales
 
