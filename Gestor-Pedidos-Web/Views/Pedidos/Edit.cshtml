@@ -1,0 +1,62 @@
+﻿@model Shared.DTOs.PedidosDTO
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<div class="container">
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Errores de validación:</strong><br />
+            @Html.Raw(TempData["error"])
+        </div>
+    }
+    @using (Html.BeginForm("EditPost", "Pedidos", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="PedidoId" value="@Model.PedidoId" />
+
+        <div class="card text-bg-light">
+            <div class="card-header text-center">
+                <h2 class="card-title">Editar Pedido</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="Fecha">Fecha</label>
+                            <input type="date" name="Fecha" value="@(Model.Fecha?.ToString("yyyy-MM-dd") ?? "")" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="Total">Total del pedido ($)</label>
+                            <input type="number" name="Total" value="@(Model.Total?.ToString("0.00") ?? "0.00")" class="form-control" placeholder="$1,000" />
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="Descripcion">Descripcion</label>
+                            <input type="text" name="Descripcion" value="@(Model.Descripcion?.ToString() ?? "Sin descripcion")" class="form-control" placeholder="Tenis Adidas, 24 pares" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="Cliente">Cliente</label>
+                            @Html.DropDownList("ClientesId", null, "Seleccionar Cliente", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-end">
+                <div class="d-flex gap-2 justify-content-end">
+                    <a href="@Url.Action("Index", "Pedidos")" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Regresar</a>
+                    <button type="submit" class="btn btn-success"><i class="bi bi-pencil"></i> Editar</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

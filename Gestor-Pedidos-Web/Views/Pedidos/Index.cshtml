@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Shared.DTOs.PedidosDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        <i class="bi bi-check-circle-fill"></i>
+        @TempData["success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        @TempData["error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="row">
+    <div class="col-6">
+        <h2>
+            Pedidos
+            <a href="@Url.Action("Create", "Pedidos")" class="text-success"><i class="bi bi-plus-square"></i></a>
+        </h2>
+    </div>
+    <div class="col-6 text-end">
+        <p>Hay @Model.Count() pedidos.</p>
+    </div>
+
+    <div class="text-end">
+        @using (Html.BeginForm("Buscar", "Pedidos", FormMethod.Get))
+        {
+            <div class="d-flex gap-1 justify-content-end">
+                @Html.TextBox("busqueda", null, new { @class = "form-control form-control-sm", placeholder = "Cliente o descripcion..." })
+                <button type="submit" class="btn btn-sm btn-secondary"><i class="bi bi-search"></i></button>
+            </div>
+        }
+    </div>
+
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center mt-3">
+        <i class="bi bi-info-circle"></i> No hay pedidos.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table text-center table-striped table-hover table-bordered mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Cliente
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @(item.Fecha?.ToShortDateString() ?? "Sin fecha")
+                        </td>
+                        <td>
+                            @(item.Total?.ToString("c") ?? "$0.00")
+                        </td>
+                        <td>
+                            @(item.Descripcion?.ToString() ?? "Sin descripcion")
+                        </td>
+                        <td>
+                            @(item.Clientes?.Nombre.ToString() ?? "Sin cliente")
+                        </td>
+                        <td class="d-flex gap-2 justify-content-center">
+                            <a href="@Url.Action("Edit", "Pedidos", new { id = item.PedidoId})" class="btn btn-sm btn-success" title="Editar pedido"><i class="bi bi-pencil"></i></a>
+                            <a href="@Url.Action("Delete", "Pedidos", new { id = item.PedidoId })"
+                               class="btn btn-sm btn-danger" title="Eliminar pedido">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+}
+
+@if (Model.Any())
+{
+    <div class="d-flex justify-content-end">
+        <a href="@Url.Action("IrReporte", "Pedidos")" class="btn btn-sm btn-secondary"><i class="bi bi-calendar2-range"></i> Generar Reporte</a>
+    </div>
+}

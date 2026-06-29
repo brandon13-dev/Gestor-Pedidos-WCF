@@ -1,0 +1,41 @@
+﻿@model Shared.DTOs.PedidosDTO
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2 class="card-title">Eliminar</h2>
+        </div>
+        <div class="card-body">
+            <p class="fs-5">¿Estás seguro de eliminar el siguiente pedido?</p>
+            <dl class="row mb-1">
+                <dt class="col-sm-5">Fecha:</dt>
+                <dd class="col-sm-7">@(Model.Fecha?.ToString("dd/MM/yyyy") ?? "Sin fecha")</dd>
+                <dt class="col-sm-5">Total:</dt>
+                <dd class="col-sm-7">@(Model.Total?.ToString("c") ?? "$0.00")</dd>
+                <dt class="col-sm-5">Descripcion:</dt>
+                <dd class="col-sm-7">@(Model.Descripcion?.ToString() ?? "Sin descripcion")</dd>
+                <dt class="col-sm-5">Cliente:</dt>
+                <dd class="col-sm-7">@(Model.Clientes?.Nombre ?? "Sin cliente")</dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <div class="d-flex gap-2 justify-content-end">
+                <a href="@Url.Action("Index", "Pedidos")" class="btn btn-sm btn-secondary"><i class="bi bi-arrow-left"></i> Regresar</a>
+                @using (Html.BeginForm("DeletePost", "Pedidos", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", Model.PedidoId)
+                    <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Eliminar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

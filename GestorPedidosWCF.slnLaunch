@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "Gestor-Pedidos-Web\\Gestor-Pedidos-Web.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Gestor-Pedidos-Service\\Gestor-Pedidos-Service.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

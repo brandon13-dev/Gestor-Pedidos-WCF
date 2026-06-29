@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/1.Web/">
+    <Project Path="Gestor-Pedidos-Web/Gestor-Pedidos-Web.csproj" Id="af5e132a-3361-4309-bfac-49190a9ed9f4" />
+  </Folder>
+  <Folder Name="/2.WCF/">
+    <Project Path="Gestor-Pedidos-Service/Gestor-Pedidos-Service.csproj" Id="75fea127-6b0b-4f47-a6bd-c9def118f89e" />
+  </Folder>
+  <Folder Name="/3.Business/">
+    <Project Path="Business/Business.csproj" Id="43887078-400c-41da-b17e-c862b92e21af" />
+  </Folder>
+  <Folder Name="/4.Data/">
+    <Project Path="Data/Data.csproj" Id="e0ebe4bb-6d83-4bec-9321-3673cad763a6" />
+  </Folder>
+  <Folder Name="/5.Entity/">
+    <Project Path="Entity/Entity.csproj" Id="f4bcc3d3-feac-4a84-aed2-568a30e30dc0" />
+  </Folder>
+  <Folder Name="/6.Shared/">
+    <Project Path="Shared/Shared.csproj" Id="2869df8f-f339-4859-9e14-eb30b1af14c8" />
+  </Folder>
+</Solution>

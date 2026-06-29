@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Shared.DTOs.PedidosDTO>
+
+@{
+    ViewBag.Title = "Reporte";
+}
+
+<div class="row">
+    <div class="col-4">
+        <h2>
+            Reporte
+        </h2>
+    </div>
+    <div class="col-8 text-end">
+        @if (TempData["error"] == null)
+        {
+            if (Model.Count() == 0)
+            {
+                <span>No hay pedidos.</span>
+            }
+            else if (Model.Count() == 1)
+            {
+                <span>Hay @Model.Count() pedido. </span>
+            }
+            else
+            {
+                <span>Hay @Model.Count() pedidos. </span>
+            }
+        }
+
+    </div>
+
+    <div class="text-end">
+        @using (Html.BeginForm("Reporte", "Pedidos", FormMethod.Get))
+        {
+            <div class="d-flex gap-2 align-items-end justify-content-end">
+                <div>
+                    <label class="form-label text-muted small mb-1">Desde</label>
+                    <input type="date" name="fechaInicial" value="@ViewBag.FechaInicial" class="form-control form-control-sm" style="width: 150px;" />
+                </div>
+                <div>
+                    <label class="form-label text-muted small mb-1">Hasta</label>
+                    <input type="date" name="fechaFinal" value="@ViewBag.FechaFinal" class="form-control form-control-sm" style="width: 150px;" />
+                </div>
+                <button type="submit" class="btn btn-sm btn-success" style="height: 31px;"><i class="bi bi-calendar-check"></i> Generar</button>
+            </div>
+        }
+    </div>
+
+</div>
+
+@if (TempData["error"] == null)
+{
+    if (!Model.Any())
+    {
+
+        <div class="alert alert-info alert-dismissible fade show py-0 px-3 mt-2 d-flex align-items-center" role="alert" style="font-size: 0.85rem; border-left: 4px solid #51E3F0; background: #ADE8ED; min-height: 32px; ">
+            <i class="bi bi-info-circle-fill me-2 text-info"></i>
+            <span>No se encontraron pedidos entre esas fechas.</span>
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table text-center table-striped table-hover table-bordered mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            Fecha
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            Descripcion
+                        </th>
+                        <th>
+                            Cliente
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @(item.Fecha?.ToShortDateString() ?? "Sin fecha")
+                            </td>
+                            <td>
+                                @(item.Total?.ToString("c") ?? "$0.00")
+                            </td>
+                            <td>
+                                @(item.Descripcion?.ToString() ?? "Sin descripcion")
+                            </td>
+                            <td>
+                                @(item.Clientes?.Nombre.ToString() ?? "Sin cliente")
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show py-0 px-3 mt-2 d-flex align-items-center" role="alert" style="font-size: 0.85rem; border-left: 4px solid #dc3545; background: #fff5f5; min-height: 32px;">
+        <i class="bi bi-exclamation-circle-fill me-2 text-danger"></i>
+        <span>@TempData["error"]</span>
+    </div>
+}
+
+
+
+<div class="text-end">
+    <a href="@Url.Action("Index", "Pedidos")" class="btn btn-sm btn-secondary"><i class="bi bi-arrow-return-left"></i> Regresar</a>
+</div>
