@@ -99,15 +99,21 @@ Abre el archivo `GestorPedidosWCF.slnx` en Visual Studio.
 
 El proyecto utiliza Entity Framework con conexion a SQL Server.
 
-**IMPORTANTE:** El archivo `Web.config` contiene credenciales reales y NO está subido al repositorio por seguridad.
+**IMPORTANTE:** El archivo `Web.config` y `App.config` contiene credenciales reales y NO está subido al repositorio por seguridad.
 
 Para configurar el entorno:
 
-# Copia la plantilla de configuración
+# Copia la plantilla de configuración del Web.config
 
 `cp Gestor-Pedidos-Service/Web.config.template Gestor-Pedidos-Service/Web.config`
 
 Luego edita `Gestor-Pedidos-Service/Web.config` y reemplaza los placeholders con tus credenciales dentro de la etiqueta `<connectionStrings>` (data source, initial catalog, user id, password).
+
+# Copia la plantilla de configuración del App.config
+
+`cp Entity/App.config.template Entity/App.config`
+
+Luego edita `Entity/App.config` y reemplaza los placeholders con tus credenciales dentro de la etiqueta `<connectionStrings>` (data source, initial catalog, user id, password).
 
 **4. Restaurar paquetes NuGet**
 
@@ -167,6 +173,7 @@ GestorPedidosWCF/
 │   └── Entity/                            # Modelo de datos (Entity Framework)
 │       ├── Models/
 │       │   └── ModelPedidosClientes.edmx  # Modelo EDMX
+│       ├── App.config.template            # Plantilla de configuración (SÍ subida)
 │       └── App.config                     # Configuración local (NO subido)
 ├── 6.Shared/
 │   └── Shared/                            # Modelo de datos (Entity Framework)
